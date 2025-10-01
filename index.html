@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pronunciation Search</title>
+  <style>
+    body {
+      background-color: #1d1d1d; /* тёмно-серый фон */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .search-container {
+      width: 100%;
+      max-width: 700px; /* комфортная ширина */
+      padding: 0 20px;
+      margin-top: 25vh; /* чуть выше середины */
+	  margin-right: 5vh;
+    }
+    input[type="text"] {
+	  background-color: #4c4f54;
+	  color: #ffffff;
+	  width: 100%;
+      padding: 50px 60px; /* больше высота */
+      font-size: 50px;    /* крупнее шрифт */
+      border: none;
+      border-radius: 400px; /* более круглое */
+      outline: none;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <form id="searchForm">
+      <input type="text" id="searchInput" placeholder="Type your word..."
+  type="text" 
+  id="searchInput" 
+  class="search-box" 
+  placeholder="Search..." 
+  autofocus
+  autocomplete="off"
+  autocorrect="off"
+  autocapitalize="off"
+  spellcheck="false">
+    </form>
+  </div>
+
+  <script>
+    // автофокус при загрузке (для подстраховки)
+    window.onload = function() {
+      document.getElementById("searchInput").focus();
+    };
+
+    // обработка ввода
+    document.getElementById("searchForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let input = document.getElementById("searchInput").value.trim();
+      if (input.length > 0) {
+        let url = "https://www.google.com/search?q=" + encodeURIComponent(input + " pronunciation");
+        window.location.href = url;
+      }
+    });
+  </script>
+</body>
+</html>
